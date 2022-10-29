@@ -1,2 +1,1 @@
-# s6PGnYy8l4hCt7RyZNDbIACiJwXD7kOs65Ok1vH7MWlFU2ElmoSBuB55i1NHZkrrSEsiE69sjdEdaiGZ
-jpeg
+使用picgo制作图床，2022年10月29日开始测试
