@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        h1 {
+            color: #333;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        label {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+            word-wrap: break-word;
+            width: 300px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generator</h1>
+    <input type="text" id="inputText" placeholder="Enter text here">
+    <button onclick="generateHash()">ClickMe</button>
+    <br><br>
+    <label id="resultLabel"></label>
+
+    <script>
+        function generateHash() {
+            let input = document.getElementById('inputText').value;
+            // Get the first 32 characters and convert to uppercase
+            const substring = input.substring(0, Math.min(32, input.length)).toUpperCase();
+            // Compute MD5 hash
+            const md5 = CryptoJS.MD5(substring).toString(CryptoJS.enc.Hex).toUpperCase();
+            // Compute SHA512 hash of the MD5 hash
+            const sha512 = CryptoJS.SHA512(md5).toString(CryptoJS.enc.Hex).toUpperCase();
+            // Display the result
+            document.getElementById('resultLabel').innerText = sha512;
+        }
+    </script>
+    <!-- 引入CryptoJS库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+</body>
+</html>
